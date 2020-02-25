@@ -12,7 +12,7 @@ pip install -r requirements.txt
 ```
 
 ## Usage
-For usage, please see test.py
+For usage, please see test.py. Please note that the name of each term is yet to added into the display. For the time being, you will need to translate the Sun's ecliptic longitude into a term by comparing the two from this [Wikipedia table](https://en.wikipedia.org/wiki/Solar_term#List_of_solar_terms). For example, March Equinox (0.0° ) will be at 2020-Mar-20 16:49:38.258 NZDT.
 ```
 $ python3 test.py 
 Getting solar terms from JPL HORIZONS. Please wait...
