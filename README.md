@@ -1,10 +1,20 @@
 # solarterms
-This small python programme is to accurately calculate the times (to millisecond) of 24 [solar terms](https://en.wikipedia.org/wiki/Solar_term) using [JPL HORIZONS](https://ssd.jpl.nasa.gov/). 本python程式利用噴射推進實驗室的[HORIZONSt](https://ssd.jpl.nasa.gov/)网上天文数据精确计算24节气时间（精确到毫秒）。
+This small python programme is to accurately calculate the times (to millisecond) of 24 [solar terms](https://en.wikipedia.org/wiki/Solar_term)
+using [JPL HORIZONS](https://ssd.jpl.nasa.gov/).
+本python程式利用噴射推進實驗室的[HORIZONS](https://ssd.jpl.nasa.gov/)网上天文数据精确计算24节气时间（精确到毫秒）。
 
-## usage
+## Installation
+Install Python 3 (and its pip) and download the whole repository to your computer. 
+
+Install required python packages using the following command
+```
+pip install -r requirements.txt
+```
+
+## Usage
 For usage, please see test.py
 ```
-$ python test.py 
+$ python3 test.py 
 Getting solar terms from JPL HORIZONS. Please wait...
 Solar terms for 2020 are (in NZDT):
            datetime           ObsEclLon
