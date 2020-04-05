@@ -10,7 +10,8 @@ minTimeDelta = datetime.timedelta(seconds = 0.5)
 zeroTimeDelta = datetime.timedelta()
 MaxWorkers = 20
 TOLERANCE = 1e-12
-JPLTimeFormat = "%Y-%b-%d %H:%M:%S.%f"
+#JPLTimeFormat = "%Y-%b-%d %H:%M:%S.%f"
+JPLTimeFormat = "YYYY-MM-DD HH:mm:ss.SSS"
 numberOfTerms = 24
 degreeOfCircle = 360
 lengthOfTermInDegs = degreeOfCircle / numberOfTerms
@@ -27,9 +28,9 @@ def time2Str(t, withtz=False):
         return t
     else:
         if withtz:
-            return t.strftime(JPLTimeFormat)[:-3] + t.strftime(" %Z") 
+            return t.format( JPLTimeFormat[:-4] + " ZZZ" )
         else:
-            return t.strftime(JPLTimeFormat)[:-3]
+            return t.format(JPLTimeFormat[:-4])
 
 def str2Time(str, tz=datetime.timezone.utc):
     if(str.count(':')<2):
@@ -124,10 +125,10 @@ def linInterpTerm(term, n=0):
 class SolarTerms:
     def __init__(self, baseTime = utcnow(), timespan=2*lengthOfTermInDays, forwardspand=None, backspan=None, tz=None):
         print('Getting solar terms from JPL HORIZONS. Please wait...')
-        self.__basetime = baseTime.replace(tzinfo=datetime.timezone.utc) if baseTime.tzinfo is None else baseTime
-        self.__tz = self.__basetime.astimezone().tzinfo if tz is None else tz
-        if not isinstance(self.__tz, datetime.timezone):
-            raise TypeError('tz must be a datetime.timezone object.')
+        self.__basetime = baseTime
+        #self.__tz = self.__basetime.astimezone().tzinfo if tz is None else tz
+        #if not isinstance(self.__tz, datetime.timezone):
+        #    raise TypeError('tz must be a datetime.timezone object.')
         if forwardspand is None:
             forwardspand = timespan / 2.0
         if backspan is None:
@@ -143,17 +144,17 @@ class SolarTerms:
 
     @property
     def tzinfo(self):
-        return self.__tz
+        return self.__basetime.tzinfo
 
     def tzname(self):
-        return self.__basetime.astimezone(self.__tz).tzname()
+        return self.__basetime.datetime.tzname()
 
     def __repr__(self):
         return self.__terms.__repr__()
 
     def __str__(self):
         terms = deepcopy(self.__terms)
-        terms[ColNameTime] = list( map(lambda x: time2Str(x.astimezone(self.__tz), withtz=True), terms[ColNameTime]) )
+        terms[ColNameTime] = list( map(lambda x: time2Str(x.astimezone(self.tzinfo), withtz=True), terms[ColNameTime]) )
         return terms.__str__()
 
     def __getitem__(self, arg):
