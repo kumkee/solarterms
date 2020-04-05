@@ -28,9 +28,9 @@ def time2Str(t, withtz=False):
         return t
     else:
         if withtz:
-            return t.format( JPLTimeFormat[:-4] + " ZZZ" )
+            return t.format( JPLTimeFormat + " ZZZ" )
         else:
-            return t.format(JPLTimeFormat[:-4])
+            return t.format(JPLTimeFormat)
 
 def str2Time(str, tz=datetime.timezone.utc):
     if(str.count(':')<2):
