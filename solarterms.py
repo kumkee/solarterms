@@ -29,7 +29,7 @@ def time2Str(t, withtz=False):
         return t
     else:
         if withtz:
-            return t.format( JPLTimeFormat + " ZZZ" )
+            return t.format( JPLTimeFormat + " ZZ" )
         else:
             return t.format(JPLTimeFormat)
 
@@ -45,15 +45,11 @@ def str2Timestamp(str):
     return str2Time(str).float_timestamp
     #return str2Time(str).timestamp()
 
-def timestamp2Time(ts, tz=datetime.timezone.utc):
-    return arrow.get(ts, tzinfo=tz)
+def timestamp2Time(ts, tz='UTC'): return arrow.get(ts, tzinfo=tz)
     #return datetime.datetime.fromtimestamp(ts, tz=tz)
 
 def timestamp2Str(ts):
     return time2Str(timestamp2Time(ts))
-
-#def utcnow():
-#    return datetime.datetime.now(tz=datetime.timezone.utc)
 
 
 def sunHorizons(start, stop, step):
@@ -155,7 +151,8 @@ class SolarTerms:
         return self.__basetime.tzinfo
 
     def tzname(self):
-        return self.__basetime.datetime.tzname()
+        s = str(self.__basetime.tzinfo)
+        return s.split("zoneinfo/")[-1][:-2]
 
     def __repr__(self):
         return self.__terms.__repr__()
