@@ -14,33 +14,33 @@ pip install -r requirements.txt
 ## Usage
 For usage, please see test.py. Please note that the name of each term is yet to added into the display. For the time being, you will need to translate the Sun's ecliptic longitude into a term by comparing the two from this [Wikipedia table](https://en.wikipedia.org/wiki/Solar_term#List_of_solar_terms). For example, March Equinox (0.0° ) will be at 2020-Mar-20 16:49:38.258 NZDT.
 ```
-$ python3 test.py 
+$ python test.py                                                                                                                                                         <<<
 Getting solar terms from JPL HORIZONS. Please wait...
-Solar terms for 2020 are (in NZDT):
+Solar terms for 2021 will be (in the timezone of Australia/Sydney):
            datetime           ObsEclLon
 ----------------------------- ---------
-2020-Jan-06 10:30:07.610 NZDT     285.0
-2020-Jan-21 03:54:41.322 NZDT     300.0
-2020-Feb-04 22:03:21.051 NZDT     315.0
-2020-Feb-19 17:57:01.327 NZDT     330.0
-2020-Mar-05 15:56:54.422 NZDT     345.0
-2020-Mar-20 16:49:38.258 NZDT       0.0
-2020-Apr-04 20:38:11.359 NZDT      15.0
-2020-Apr-20 03:45:30.125 NZDT      30.0
-2020-May-05 13:51:24.482 NZDT      45.0
-2020-May-21 02:49:18.348 NZDT      60.0
-2020-Jun-05 17:58:27.000 NZDT      75.0
-2020-Jun-21 10:43:42.000 NZDT      90.0
-2020-Jul-07 04:14:28.509 NZDT     105.0
-2020-Jul-22 21:36:53.554 NZDT     120.0
-2020-Aug-07 14:06:12.481 NZDT     135.0
-2020-Aug-23 04:44:56.973 NZDT     150.0
-2020-Sep-07 17:08:04.000 NZDT     165.0
-2020-Sep-23 02:30:40.122 NZDT     180.0
-2020-Oct-08 08:55:16.859 NZDT     195.0
-2020-Oct-23 11:59:33.412 NZDT     210.0
-2020-Nov-07 12:13:56.344 NZDT     225.0
-2020-Nov-22 09:39:46.517 NZDT     240.0
-2020-Dec-07 05:09:31.406 NZDT     255.0
-2020-Dec-21 23:02:21.440 NZDT     270.0
+2021-Jan-05 14:23:26.864 AEDT     285.0
+2021-Jan-20 07:39:52.788 AEDT     300.0
+2021-Feb-04 01:58:48.889 AEDT     315.0
+2021-Feb-18 21:43:59.456 AEDT     330.0
+2021-Mar-05 19:53:42.094 AEDT     345.0
+2021-Mar-20 20:37:29.732 AEDT       0.0
+2021-Apr-04 23:35:07.429 AEST      15.0
+2021-Apr-20 06:33:25.196 AEST      30.0
+2021-May-05 16:47:11.678 AEST      45.0
+2021-May-21 05:37:08.063 AEST      60.0
+2021-Jun-05 20:52:07.232 AEST      75.0
+2021-Jun-21 13:32:11.008 AEST      90.0
+2021-Jul-07 07:05:29.830 AEST     105.0
+2021-Jul-23 00:26:26.821 AEST     120.0
+2021-Aug-07 16:53:59.535 AEST     135.0
+2021-Aug-23 07:34:59.830 AEST     150.0
+2021-Sep-07 19:52:57.303 AEST     165.0
+2021-Sep-23 05:21:06.456 AEST     180.0
+2021-Oct-08 12:39:03.184 AEDT     195.0
+2021-Oct-23 15:51:11.137 AEDT     210.0
+2021-Nov-07 15:58:46.720 AEDT     225.0
+2021-Nov-22 13:33:44.844 AEDT     240.0
+2021-Dec-07 08:57:04.838 AEDT     255.0
+2021-Dec-22 02:59:19.364 AEDT     270.0
 ```
