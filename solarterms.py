@@ -29,7 +29,7 @@ def time2Str(t, withtz=False):
         return t
     else:
         if withtz:
-            return t.format( JPLTimeFormat + " ZZ" )
+            return t.format( JPLTimeFormat + " ZZZ" )
         else:
             return t.format(JPLTimeFormat)
 
@@ -41,15 +41,16 @@ def str2Time(str, tz='UTC'):
     return arrow.get(str, JPLTimeFormat, tzinfo=tz)
     #return datetime.datetime.strptime(str, JPLTimeFormat).replace(tzinfo=tz)
 
-def str2Timestamp(str):
-    return str2Time(str).float_timestamp
+def str2Timestamp(str, tz='UTC'):
+    return str2Time(str, tz).float_timestamp
     #return str2Time(str).timestamp()
 
-def timestamp2Time(ts, tz='UTC'): return arrow.get(ts, tzinfo=tz)
+def timestamp2Time(ts, tz='UTC'):
+    return arrow.get(ts, tzinfo=tz)
     #return datetime.datetime.fromtimestamp(ts, tz=tz)
 
-def timestamp2Str(ts):
-    return time2Str(timestamp2Time(ts))
+def timestamp2Str(ts, tz='UTC'):
+    return time2Str(timestamp2Time(ts, tz))
 
 
 def sunHorizons(start, stop, step):
