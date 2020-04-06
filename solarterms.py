@@ -24,7 +24,6 @@ ColNameTime = 'datetime'
 
 
 def time2Str(t, withtz=False):
-    #format = JPLTimeFormat + " %Z" if withtz else JPLTimeFormat
     if isinstance(t, str):
         return t
     else:
@@ -39,15 +38,12 @@ def str2Time(str, tz='UTC'):
     if(str.count('.')<1):
         str += '.0'
     return arrow.get(str, JPLTimeFormat, tzinfo=tz)
-    #return datetime.datetime.strptime(str, JPLTimeFormat).replace(tzinfo=tz)
 
 def str2Timestamp(str, tz='UTC'):
     return str2Time(str, tz).float_timestamp
-    #return str2Time(str).timestamp()
 
 def timestamp2Time(ts, tz='UTC'):
     return arrow.get(ts, tzinfo=tz)
-    #return datetime.datetime.fromtimestamp(ts, tz=tz)
 
 def timestamp2Str(ts, tz='UTC'):
     return time2Str(timestamp2Time(ts, tz))
@@ -92,12 +88,7 @@ def horizons2RoughTerms(horizons):
 def refineTerm(roughTerm):
     start = roughTerm[ColNameTimeStr][0]
     stop = roughTerm[ColNameTimeStr][1]
-    #debug:
-    #print('----------------- debug -----------------')
-    #print('stop:', stop)
-    #print('start:', start)
     tspan = str2Time(stop) - str2Time(start)
-    #debug:print('refineTerm is called. start, tspan = ', start, tspan)
     if tspan <= 1.2*minTimeDelta:
         return roughTerm
     step = timespan2StepSize(tspan)
@@ -120,7 +111,6 @@ def linInterpTerm(term, n=0):
     yp = list( map(str2Timestamp, term[ColNameTimeStr]) )
     x = xp[-1] - xp[-1]%lengthOfTermInDegs
     y0 = np.interp(x, xp, yp)
-    #debug:print('linInterpTerm is called. start, n, y0 = ', start, n, timestamp2Str(y0))
     t_y0 = timestamp2Time(y0)
     t_2 = t_y0 + minTimeDelta
     h = sunHorizons(t_y0, t_2, '1')
@@ -128,12 +118,9 @@ def linInterpTerm(term, n=0):
 
 
 class SolarTerms:
-    def __init__(self, baseTime = arrow.utcnow(), timespan=2*lengthOfTermInDays, forwardspand=None, backspan=None, tz=None):
+    def __init__(self, baseTime = arrow.utcnow(), timespan=2*lengthOfTermInDays, forwardspand=None, backspan=None):
         print('Getting solar terms from JPL HORIZONS. Please wait...')
         self.__basetime = baseTime
-        #self.__tz = self.__basetime.astimezone().tzinfo if tz is None else tz
-        #if not isinstance(self.__tz, datetime.timezone):
-        #    raise TypeError('tz must be a datetime.timezone object.')
         if forwardspand is None:
             forwardspand = timespan / 2.0
         if backspan is None:
