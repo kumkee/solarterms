@@ -12,7 +12,7 @@ zeroTimeDelta = datetime.timedelta()
 MaxWorkers = 20
 TOLERANCE = 1e-12
 #JPLTimeFormat = "%Y-%b-%d %H:%M:%S.%f"
-JPLTimeFormat = "YYYY-MM-DD HH:mm:ss.SSS"
+JPLTimeFormat = "YYYY-MMM-DD HH:mm:ss.SSS"
 numberOfTerms = 24
 degreeOfCircle = 360
 lengthOfTermInDegs = degreeOfCircle / numberOfTerms
@@ -33,12 +33,12 @@ def time2Str(t, withtz=False):
         else:
             return t.format(JPLTimeFormat)
 
-def str2Time(str, tz=datetime.timezone.utc):
-    return arrow.get(str, tzinfo=tz)
-    #if(str.count(':')<2):
-    #    str += ':00'
-    #if(str.count('.')<1):
-    #    str += '.0'
+def str2Time(str, tz='UTC'):
+    if(str.count(':')<2):
+        str += ':00'
+    if(str.count('.')<1):
+        str += '.0'
+    return arrow.get(str, JPLTimeFormat, tzinfo=tz)
     #return datetime.datetime.strptime(str, JPLTimeFormat).replace(tzinfo=tz)
 
 def str2Timestamp(str):
@@ -95,6 +95,10 @@ def horizons2RoughTerms(horizons):
 def refineTerm(roughTerm):
     start = roughTerm[ColNameTimeStr][0]
     stop = roughTerm[ColNameTimeStr][1]
+    #debug:
+    #print('----------------- debug -----------------')
+    #print('stop:', stop)
+    #print('start:', start)
     tspan = str2Time(stop) - str2Time(start)
     #debug:print('refineTerm is called. start, tspan = ', start, tspan)
     if tspan <= 1.2*minTimeDelta:
@@ -158,7 +162,7 @@ class SolarTerms:
 
     def __str__(self):
         terms = deepcopy(self.__terms)
-        terms[ColNameTime] = list( map(lambda x: time2Str(x.astimezone(self.tzinfo), withtz=True), terms[ColNameTime]) )
+        terms[ColNameTime] = list( map(lambda x: time2Str(x.to(self.tzinfo), withtz=True), terms[ColNameTime]) )
         return terms.__str__()
 
     def __getitem__(self, arg):
