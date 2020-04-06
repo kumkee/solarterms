@@ -4,6 +4,7 @@ import concurrent.futures
 import numpy as np
 from astropy import table as atb
 from copy import deepcopy
+import arrow
 
 
 minTimeDelta = datetime.timedelta(seconds = 0.5)
@@ -33,23 +34,26 @@ def time2Str(t, withtz=False):
             return t.format(JPLTimeFormat)
 
 def str2Time(str, tz=datetime.timezone.utc):
-    if(str.count(':')<2):
-        str += ':00'
-    if(str.count('.')<1):
-        str += '.0'
-    return datetime.datetime.strptime(str, JPLTimeFormat).replace(tzinfo=tz)
+    return arrow.get(str, tzinfo=tz)
+    #if(str.count(':')<2):
+    #    str += ':00'
+    #if(str.count('.')<1):
+    #    str += '.0'
+    #return datetime.datetime.strptime(str, JPLTimeFormat).replace(tzinfo=tz)
 
 def str2Timestamp(str):
-    return str2Time(str).timestamp()
+    return str2Time(str).float_timestamp
+    #return str2Time(str).timestamp()
 
 def timestamp2Time(ts, tz=datetime.timezone.utc):
-    return datetime.datetime.fromtimestamp(ts, tz=tz)
+    return arrow.get(ts, tzinfo=tz)
+    #return datetime.datetime.fromtimestamp(ts, tz=tz)
 
 def timestamp2Str(ts):
     return time2Str(timestamp2Time(ts))
 
-def utcnow():
-    return datetime.datetime.now(tz=datetime.timezone.utc)
+#def utcnow():
+#    return datetime.datetime.now(tz=datetime.timezone.utc)
 
 
 def sunHorizons(start, stop, step):
@@ -123,7 +127,7 @@ def linInterpTerm(term, n=0):
 
 
 class SolarTerms:
-    def __init__(self, baseTime = utcnow(), timespan=2*lengthOfTermInDays, forwardspand=None, backspan=None, tz=None):
+    def __init__(self, baseTime = arrow.utcnow(), timespan=2*lengthOfTermInDays, forwardspand=None, backspan=None, tz=None):
         print('Getting solar terms from JPL HORIZONS. Please wait...')
         self.__basetime = baseTime
         #self.__tz = self.__basetime.astimezone().tzinfo if tz is None else tz
