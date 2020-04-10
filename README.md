@@ -14,7 +14,7 @@ pip install -r requirements.txt
 ## Usage
 For usage, please see test.py. An example of running the test.py is listed below, where solar terms are different from those in the Northern Hemisphere.
 ```
-$ python test.py                                                                                                                                                         <<<
+$ python test.py                                                                                                                                                         
 Calculating solar terms from JPL HORIZONS data. Please wait...
 Solar terms for 2021 will be (in the timezone of Australia/Sydney):
            datetime           ObsEclLon         term        
@@ -46,7 +46,7 @@ Solar terms for 2021 will be (in the timezone of Australia/Sydney):
 ```
 The same example with Japenese term names:
 ```
-$ LANGUAGE=ja python test.py                                                                                                                                             <<<
+$ LANGUAGE=ja python test.py                                                                                                                                             
 Calculating solar terms from JPL HORIZONS data. Please wait...
 Solar terms for 2021 will be (in the timezone of Australia/Sydney):
            datetime           ObsEclLon term
