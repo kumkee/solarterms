@@ -21,6 +21,9 @@ lengthOfTermInDays = datetime.timedelta(days = 365.25/numberOfTerms + 1)
 ColNameEclLon = 'ObsEclLon'
 ColNameTimeStr = 'datetime_str'
 ColNameTime = 'datetime'
+ColTermName = 'term'
+
+TermNames = ['Spring Equinox', 'Pure Brightness', 'Grain Rain', 'Start of Summer', 'Grain Buds', 'Grain in Ear', 'Summer Solstice', 'Minor Heat', 'Major Heat', 'Start of Autumn', 'End of Heat', 'White Dew', 'Autumn Equinox', 'Cold Dew', 'Frost', 'Start of Winter', 'Minor Snow', 'Major Snow', 'Winter Solstice', 'Minor Cold', 'Major Cold', 'Start of Spring', 'Spring Showers', 'Awakening of Insects']
 
 
 def time2Str(t, withtz=False):
@@ -119,7 +122,7 @@ def linInterpTerm(term, n=0):
 
 class SolarTerms:
     def __init__(self, baseTime = arrow.utcnow(), timespan=2*lengthOfTermInDays, forwardspand=None, backspan=None):
-        print('Getting solar terms from JPL HORIZONS. Please wait...')
+        print('Calculating solar terms from JPL HORIZONS data. Please wait...')
         self.__basetime = baseTime
         if forwardspand is None:
             forwardspand = timespan / 2.0
@@ -133,6 +136,7 @@ class SolarTerms:
             self.__terms = list( executor.map(linInterpTerm, self.__terms) )
             self.__terms = atb.Table( rows = list(map( lambda x: x[0], self.__terms )), names=[ColNameTime, ColNameEclLon] )
             self.__terms[ColNameTime] = list( map(str2Time, self.__terms[ColNameTime]) )
+        self.__addnames()
 
     @property
     def tzinfo(self):
@@ -141,6 +145,12 @@ class SolarTerms:
     def tzname(self):
         s = str(self.__basetime.tzinfo)
         return s.split("zoneinfo/")[-1][:-2]
+
+    def __addnames(self):
+        l = []
+        for i in self.__terms:
+            l.append(TermNames[int( i[ColNameEclLon]//lengthOfTermInDegs )])
+        self.__terms[ColTermName] = l
 
     def __repr__(self):
         return self.__terms.__repr__()
