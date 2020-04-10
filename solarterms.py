@@ -24,7 +24,30 @@ ColNameTimeStr = 'datetime_str'
 ColNameTime = 'datetime'
 ColTermName = 'term'
 
-TermNames = ['Spring Equinox', 'Pure Brightness', 'Grain Rain', 'Start of Summer', 'Grain Buds', 'Grain in Ear', 'Summer Solstice', 'Minor Heat', 'Major Heat', 'Start of Autumn', 'End of Heat', 'White Dew', 'Autumn Equinox', 'Cold Dew', 'Frost', 'Start of Winter', 'Minor Snow', 'Major Snow', 'Winter Solstice', 'Minor Cold', 'Major Cold', 'Start of Spring', 'Spring Showers', 'Awakening of Insects']
+TermNames = [_('Spring Equinox'), \
+                _('Pure Brightness'), \
+                _('Grain Rain'), \
+                _('Start of Summer'), \
+                _('Grain Buds'), \
+                _('Grain in Ear'), \
+                _('Summer Solstice'), \
+                _('Minor Heat'), \
+                _('Major Heat'), \
+                _('Start of Autumn'), \
+                _('End of Heat'), \
+                _('White Dew'), \
+                _('Autumn Equinox'), \
+                _('Cold Dew'), \
+                _('Frost'), \
+                _('Start of Winter'), \
+                _('Minor Snow'), \
+                _('Major Snow'), \
+                _('Winter Solstice'), \
+                _('Minor Cold'), \
+                _('Major Cold'), \
+                _('Start of Spring'), \
+                _('Spring Showers'), \
+                _('Awakening of Insects')]
 
 
 def time2Str(t, withtz=False):
