@@ -2,3 +2,4 @@ astropy>=4.0
 astroquery>=0.4
 numpy
 arrow
+geopy

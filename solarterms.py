@@ -5,6 +5,7 @@ import numpy as np
 from astropy import table as atb
 from copy import deepcopy
 import arrow
+from geopy.geocoders import Nominatim
 
 
 minTimeDelta = datetime.timedelta(seconds = 0.5)
@@ -136,6 +137,7 @@ class SolarTerms:
             self.__terms = list( executor.map(linInterpTerm, self.__terms) )
             self.__terms = atb.Table( rows = list(map( lambda x: x[0], self.__terms )), names=[ColNameTime, ColNameEclLon] )
             self.__terms[ColNameTime] = list( map(str2Time, self.__terms[ColNameTime]) )
+        self.__get_location()
         self.__addnames()
 
     @property
@@ -146,10 +148,15 @@ class SolarTerms:
         s = str(self.__basetime.tzinfo)
         return s.split("zoneinfo/")[-1][:-2]
 
+    def __get_location(self):
+        geolocator = Nominatim(user_agent='solarterm')
+        self.__location = geolocator.geocode(self.tzname())
+
     def __addnames(self):
         l = []
         for i in self.__terms:
-            l.append(TermNames[int( i[ColNameEclLon]//lengthOfTermInDegs )])
+            offset = 0 if self.__location.latitude >= 0 else 180
+            l.append(TermNames[int( (i[ColNameEclLon]+offset)%degreeOfCircle//lengthOfTermInDegs )])
         self.__terms[ColTermName] = l
 
     def __repr__(self):
