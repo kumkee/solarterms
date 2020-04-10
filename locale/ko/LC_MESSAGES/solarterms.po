@@ -1,0 +1,114 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR ORGANIZATION
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: 2020-04-10 22:34+NZST\n"
+"PO-Revision-Date: 2020-04-11 11:10+1200\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: pygettext.py 1.5\n"
+"X-Generator: Poedit 2.0.6\n"
+"Last-Translator: \n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"Language: ko\n"
+
+#: solarterms.py:27
+msgid "Spring Equinox"
+msgstr "춘분"
+
+#: solarterms.py:28
+msgid "Pure Brightness"
+msgstr "청명"
+
+#: solarterms.py:29
+msgid "Grain Rain"
+msgstr "곡우"
+
+#: solarterms.py:30
+msgid "Start of Summer"
+msgstr "립하"
+
+#: solarterms.py:31
+msgid "Grain Buds"
+msgstr "소만"
+
+#: solarterms.py:32
+msgid "Grain in Ear"
+msgstr "망종"
+
+#: solarterms.py:33
+msgid "Summer Solstice"
+msgstr "하지"
+
+#: solarterms.py:34
+msgid "Minor Heat"
+msgstr "소서"
+
+#: solarterms.py:35
+msgid "Major Heat"
+msgstr "대서"
+
+#: solarterms.py:36
+msgid "Start of Autumn"
+msgstr "립추"
+
+#: solarterms.py:37
+msgid "End of Heat"
+msgstr "처서"
+
+#: solarterms.py:38
+msgid "White Dew"
+msgstr "백로"
+
+#: solarterms.py:39
+msgid "Autumn Equinox"
+msgstr "추분"
+
+#: solarterms.py:40
+msgid "Cold Dew"
+msgstr "한로"
+
+#: solarterms.py:41
+msgid "Frost"
+msgstr "상강"
+
+#: solarterms.py:42
+msgid "Start of Winter"
+msgstr "립동"
+
+#: solarterms.py:43
+msgid "Minor Snow"
+msgstr "소설"
+
+#: solarterms.py:44
+msgid "Major Snow"
+msgstr "대설"
+
+#: solarterms.py:45
+msgid "Winter Solstice"
+msgstr "동지"
+
+#: solarterms.py:46
+msgid "Minor Cold"
+msgstr "소한"
+
+#: solarterms.py:47
+msgid "Major Cold"
+msgstr "대한"
+
+#: solarterms.py:48
+msgid "Start of Spring"
+msgstr "립춘"
+
+#: solarterms.py:49
+msgid "Spring Showers"
+msgstr "우수"
+
+#: solarterms.py:50
+msgid "Awakening of Insects"
+msgstr "경칩"
