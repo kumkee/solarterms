@@ -6,6 +6,8 @@ from astropy import table as atb
 from copy import deepcopy
 import arrow
 from geopy.geocoders import Nominatim
+import gettext
+import os
 
 
 minTimeDelta = datetime.timedelta(seconds = 0.5)
@@ -23,6 +25,11 @@ ColNameEclLon = 'ObsEclLon'
 ColNameTimeStr = 'datetime_str'
 ColNameTime = 'datetime'
 ColTermName = 'term'
+
+localedir = os.path.join(os.path.abspath(os.path.dirname(__file__)), 'locale')
+translate = gettext.translation('solarterms', localedir, fallback=True)
+_ = translate.gettext
+
 
 TermNames = [_('Spring Equinox'), \
                 _('Pure Brightness'), \
