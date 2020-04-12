@@ -57,14 +57,14 @@ TermNames = [_('Spring Equinox'), \
                 _('Awakening of Insects')]
 
 
-def time2Str(t, withtz=False):
+def time2Str(t, withtz=False, locale='en'):
     if isinstance(t, str):
         return t
     else:
         if withtz:
-            return t.format( JPLTimeFormat + " ZZZ" )
+            return t.format( JPLTimeFormat + " ZZZ", locale=locale )
         else:
-            return t.format(JPLTimeFormat)
+            return t.format(JPLTimeFormat, locale=locale)
 
 def str2Time(str, tz='UTC'):
     if(str.count(':')<2):
@@ -193,8 +193,9 @@ class SolarTerms:
         return self.__terms.__repr__()
 
     def __str__(self):
+        lang = translate.info()['language']
         terms = deepcopy(self.__terms)
-        terms[ColNameTime] = list( map(lambda x: time2Str(x.to(self.tzinfo), withtz=True), terms[ColNameTime]) )
+        terms[ColNameTime] = list( map(lambda x: time2Str(x.to(self.tzinfo), withtz=True, locale=lang), terms[ColNameTime]) )
         return terms.__str__()
 
     def __getitem__(self, arg):
