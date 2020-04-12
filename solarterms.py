@@ -8,6 +8,7 @@ import arrow
 from geopy.geocoders import Nominatim
 import gettext
 import os
+import locale
 
 
 minTimeDelta = datetime.timedelta(seconds = 0.5)
@@ -25,6 +26,9 @@ ColNameEclLon = 'ObsEclLon'
 ColNameTimeStr = 'datetime_str'
 ColNameTime = 'datetime'
 ColTermName = 'term'
+LANGLBL = 'language'
+ENSTR = 'en'
+LCLANG = locale.getdefaultlocale()[0]
 
 localedir = os.path.join(os.path.abspath(os.path.dirname(__file__)), 'locale')
 translate = gettext.translation('solarterms', localedir, fallback=True)
@@ -57,7 +61,7 @@ TermNames = [_('Spring Equinox'), \
                 _('Awakening of Insects')]
 
 
-def time2Str(t, withtz=False, locale='en'):
+def time2Str(t, withtz=False, locale=ENSTR):
     if isinstance(t, str):
         return t
     else:
@@ -193,7 +197,8 @@ class SolarTerms:
         return self.__terms.__repr__()
 
     def __str__(self):
-        lang = translate.info()['language']
+        dict = translate.info()
+        lang = dict[LANGLBL] if LANGLBL in dict else LCLANG
         terms = deepcopy(self.__terms)
         terms[ColNameTime] = list( map(lambda x: time2Str(x.to(self.tzinfo), withtz=True, locale=lang), terms[ColNameTime]) )
         return terms.__str__()
