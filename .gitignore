@@ -130,3 +130,5 @@ dmypy.json
 
 #vim cache
 *.swp
+
+cronjob.py

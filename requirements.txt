@@ -1,5 +1,5 @@
-astropy>=4.0
-astroquery>=0.4
+astropy
+astroquery
 numpy
 arrow
 geopy
