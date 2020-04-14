@@ -205,3 +205,6 @@ class SolarTerms:
 
     def __getitem__(self, arg):
         return self.__terms.__getitem__(arg)
+
+    def write(self, fn):
+        self.__terms.write(fn)
