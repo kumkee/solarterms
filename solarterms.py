@@ -189,7 +189,10 @@ class SolarTerms:
     def __addnames(self):
         l = []
         for i in self.__terms:
-            offset = 0 if self.__location.latitude >= 0 else 180
+            if self.__location is None:
+                offset = 0
+            else:
+                offset = 0 if self.__location.latitude >= 0 else 180
             l.append(TermNames[int( (i[ColNameEclLon]+offset)%degreeOfCircle//lengthOfTermInDegs )])
         self.__terms[ColTermName] = l
 
