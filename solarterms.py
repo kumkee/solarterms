@@ -210,4 +210,4 @@ class SolarTerms:
         return self.__terms.__getitem__(arg)
 
     def write(self, fn):
-        self.__terms.write(fn)
+        self.__terms.write(fn, overwrite=True)
