@@ -210,4 +210,6 @@ class SolarTerms:
         return self.__terms.__getitem__(arg)
 
     def write(self, fn):
-        self.__terms.write(fn, overwrite=True)
+        df = self.__terms.to_pandas()
+        df[ColNameTime] = df[ColNameTime].apply(lambda x: x.isoformat())
+        df.to_json(fn, orient='records')

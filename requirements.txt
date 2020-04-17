@@ -3,3 +3,4 @@ astroquery
 numpy
 arrow
 geopy
+pandas
