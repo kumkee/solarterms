@@ -60,7 +60,7 @@ Solar terms for 2024 will be (in the timezone of Australia/Sydney):
 2024-Dec-07 02:17:03.601 AEDT     255.0         Grain in Ear
 2024-Dec-21 20:20:35.169 AEDT     270.0      Summer Solstice
 ```
-A second example is in Tokyo time and Japanese term names for 2020:
+A second example is in Tokyo time and Japanese term names:
 ```
 $ LANGUAGE=ja python test.py 2026 'Asia/Tokyo'
 Calculating solar terms from JPL HORIZONS data. Please wait...
