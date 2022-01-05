@@ -16,6 +16,13 @@ pip install -r requirements.txt
 ## HORIZONS' rate limit
 HORIZONS has introduced rate limits to their service. To avoid going over the limits, default maximum thread number has been set to 2. If you still encounter timeout error, please wait a moment before performing new calculations. 
 
+## Compilation of locale translations
+In order for you local translation work, you will need to compile the po file of your language into its binary mo file. Here is the example of how to do that for ja.
+```
+$ cd locale/ja/LC_MESSAGES
+$ msgfmt -o solarterms.mo solarterms
+```
+
 ## Usage
 For usage, please see test.py. An example of running the test.py is listed below, where solar terms are different from those in the Northern Hemisphere.
 ```
@@ -52,35 +59,35 @@ Solar terms for 2024 will be (in the timezone of Australia/Sydney):
 2024-Dec-07 02:17:03.601 AEDT     255.0         Grain in Ear
 2024-Dec-21 20:20:35.169 AEDT     270.0      Summer Solstice
 ```
-A second example is in Tokyo time and Japanese term names (non-English locale not working as of 2022/01/05) for 2020:
+A second example is in Tokyo time and Japanese term names for 2020:
 ```
-$ LANGUAGE=ja python test.py 2020 Asia/Tokyo  
+$ LANGUAGE=ja python test.py 2026 'Asia/Tokyo'
 Calculating solar terms from JPL HORIZONS data. Please wait...
-Solar terms for 2020 will be (in the timezone of Asia/Tokyo):
+Solar terms for 2026 will be (in the timezone of Asia/Tokyo):
           datetime          ObsEclLon term
 --------------------------- --------- ----
-2020- 1-06 06:30:07.610 JST     285.0   小寒
-2020- 1-20 23:54:41.322 JST     300.0   大寒
-2020- 2-04 18:03:21.051 JST     315.0   立春
-2020- 2-19 13:57:01.327 JST     330.0   雨水
-2020- 3-05 11:56:54.422 JST     345.0   啓蟄
-2020- 3-20 12:49:38.258 JST       0.0   春分
-2020- 4-04 16:38:11.359 JST      15.0   清明
-2020- 4-19 23:45:30.125 JST      30.0   穀雨
-2020- 5-05 09:51:24.482 JST      45.0   立夏
-2020- 5-20 22:49:18.348 JST      60.0   小満
-2020- 6-05 13:58:27.000 JST      75.0   芒種
-2020- 6-21 06:43:42.000 JST      90.0   夏至
-2020- 7-07 00:14:28.509 JST     105.0   小暑
-2020- 7-22 17:36:53.554 JST     120.0   大暑
-2020- 8-07 10:06:12.481 JST     135.0   立秋
-2020- 8-23 00:44:56.973 JST     150.0   処暑
-2020- 9-07 13:08:04.000 JST     165.0   白露
-2020- 9-22 22:30:40.122 JST     180.0   秋分
-2020-10-08 04:55:16.859 JST     195.0   寒露
-2020-10-23 07:59:33.412 JST     210.0   霜降
-2020-11-07 08:13:56.344 JST     225.0   立冬
-2020-11-22 05:39:46.517 JST     240.0   小雪
-2020-12-07 01:09:31.406 JST     255.0   大雪
-2020-12-21 19:02:21.440 JST     270.0   冬至
+2026- 1-05 17:23:10.398 JST     285.0   小寒
+2026- 1-20 10:44:57.008 JST     300.0   大寒
+2026- 2-04 05:02:08.913 JST     315.0   立春
+2026- 2-19 00:51:56.449 JST     330.0   雨水
+2026- 3-05 22:59:00.103 JST     345.0   啓蟄
+2026- 3-20 23:45:58.439 JST       0.0   春分
+2026- 4-05 03:40:00.201 JST      15.0   清明
+2026- 4-20 10:39:07.517 JST      30.0   穀雨
+2026- 5-05 20:48:44.714 JST      45.0   立夏
+2026- 5-21 09:36:45.366 JST      60.0   小満
+2026- 6-06 00:48:22.909 JST      75.0   芒種
+2026- 6-21 17:24:31.300 JST      90.0   夏至
+2026- 7-07 10:56:58.281 JST     105.0   小暑
+2026- 7-23 04:13:06.044 JST     120.0   大暑
+2026- 8-07 20:42:45.300 JST     135.0   立秋
+2026- 8-23 11:18:49.181 JST     150.0   処暑
+2026- 9-07 23:41:17.964 JST     165.0   白露
+2026- 9-23 09:05:13.910 JST     180.0   秋分
+2026-10-08 15:29:18.271 JST     195.0   寒露
+2026-10-23 18:37:57.077 JST     210.0   霜降
+2026-11-07 18:52:05.163 JST     225.0   立冬
+2026-11-22 16:23:21.405 JST     240.0   小雪
+2026-12-07 11:52:32.330 JST     255.0   大雪
+2026-12-22 05:50:15.050 JST     270.0   冬至
 ```
