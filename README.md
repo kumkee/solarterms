@@ -8,43 +8,51 @@ Install Python 3 (and its pip) and download the whole repository to your compute
 
 Install required python packages using the following command
 ```
+python3 -m venv env
+source env/bin/activate
 pip install -r requirements.txt
 ```
+
+## HORIZONS' rate limit
+HORIZONS has introduced rate limits to their service. To avoid going over the limits, default maximum thread number has been set to 2. If you still encounter timeout error, please wait a moment before performing new calculations. 
 
 ## Usage
 For usage, please see test.py. An example of running the test.py is listed below, where solar terms are different from those in the Northern Hemisphere.
 ```
-$ python test.py                                                                                                                                                         
+$ source env/bin/activate
+$ python test.py 2024 'Australia/Sydney'
 Calculating solar terms from JPL HORIZONS data. Please wait...
-Solar terms for 2021 will be (in the timezone of Australia/Sydney):
-           datetime           ObsEclLon         term        
+WARNING: AstropyDeprecationWarning: ``id_type``s 'majorbody' and 'id' are deprecated and replaced with ``None``, which has the same functionality. [astroquery.jplhorizons.core]
+WARNING: AstropyDeprecationWarning: ``id_type``s 'majorbody' and 'id' are deprecated and replaced with ``None``, which has the same functionality. [astroquery.jplhorizons.core]
+Solar terms for 2024 will be (in the timezone of Australia/Sydney):
+           datetime           ObsEclLon         term
 ----------------------------- --------- --------------------
-2021-Jan-05 14:23:26.864 AEDT     285.0           Minor Heat
-2021-Jan-20 07:39:52.788 AEDT     300.0           Major Heat
-2021-Feb-04 01:58:48.889 AEDT     315.0      Start of Autumn
-2021-Feb-18 21:43:59.456 AEDT     330.0          End of Heat
-2021-Mar-05 19:53:42.094 AEDT     345.0            White Dew
-2021-Mar-20 20:37:29.732 AEDT       0.0       Autumn Equinox
-2021-Apr-04 23:35:07.429 AEST      15.0             Cold Dew
-2021-Apr-20 06:33:25.196 AEST      30.0                Frost
-2021-May-05 16:47:11.678 AEST      45.0      Start of Winter
-2021-May-21 05:37:08.063 AEST      60.0           Minor Snow
-2021-Jun-05 20:52:07.232 AEST      75.0           Major Snow
-2021-Jun-21 13:32:11.008 AEST      90.0      Winter Solstice
-2021-Jul-07 07:05:29.830 AEST     105.0           Minor Cold
-2021-Jul-23 00:26:26.821 AEST     120.0           Major Cold
-2021-Aug-07 16:53:59.535 AEST     135.0      Start of Spring
-2021-Aug-23 07:34:59.830 AEST     150.0       Spring Showers
-2021-Sep-07 19:52:57.303 AEST     165.0 Awakening of Insects
-2021-Sep-23 05:21:06.456 AEST     180.0       Spring Equinox
-2021-Oct-08 12:39:03.184 AEDT     195.0      Pure Brightness
-2021-Oct-23 15:51:11.137 AEDT     210.0           Grain Rain
-2021-Nov-07 15:58:46.720 AEDT     225.0      Start of Summer
-2021-Nov-22 13:33:44.844 AEDT     240.0           Grain Buds
-2021-Dec-07 08:57:04.838 AEDT     255.0         Grain in Ear
-2021-Dec-22 02:59:19.364 AEDT     270.0      Summer Solstice
+2024-Jan-06 07:49:23.550 AEDT     285.0           Minor Heat
+2024-Jan-21 01:07:21.724 AEDT     300.0           Major Heat
+2024-Feb-04 19:27:08.603 AEDT     315.0      Start of Autumn
+2024-Feb-19 15:13:11.338 AEDT     330.0          End of Heat
+2024-Mar-05 13:22:47.198 AEDT     345.0            White Dew
+2024-Mar-20 14:06:25.232 AEDT       0.0       Autumn Equinox
+2024-Apr-04 18:02:18.815 AEDT      15.0             Cold Dew
+2024-Apr-19 23:59:46.598 AEST      30.0                Frost
+2024-May-05 10:10:06.214 AEST      45.0      Start of Winter
+2024-May-20 22:59:31.491 AEST      60.0           Minor Snow
+2024-Jun-05 14:09:54.758 AEST      75.0           Major Snow
+2024-Jun-21 06:51:00.836 AEST      90.0      Winter Solstice
+2024-Jul-07 00:20:04.400 AEST     105.0           Minor Cold
+2024-Jul-22 17:44:26.672 AEST     120.0           Major Cold
+2024-Aug-07 10:09:17.336 AEST     135.0      Start of Spring
+2024-Aug-23 00:55:03.794 AEST     150.0       Spring Showers
+2024-Sep-07 13:11:21.660 AEST     165.0 Awakening of Insects
+2024-Sep-22 22:43:40.375 AEST     180.0       Spring Equinox
+2024-Oct-08 05:59:58.184 AEDT     195.0      Pure Brightness
+2024-Oct-23 09:14:45.284 AEDT     210.0           Grain Rain
+2024-Nov-07 09:20:05.465 AEDT     225.0      Start of Summer
+2024-Nov-22 06:56:30.694 AEDT     240.0           Grain Buds
+2024-Dec-07 02:17:03.601 AEDT     255.0         Grain in Ear
+2024-Dec-21 20:20:35.169 AEDT     270.0      Summer Solstice
 ```
-A second example is in Tokyo time and Japanese term names for 2020:
+A second example is in Tokyo time and Japanese term names (non-English locale not working as of 2022/01/05) for 2020:
 ```
 $ LANGUAGE=ja python test.py 2020 Asia/Tokyo  
 Calculating solar terms from JPL HORIZONS data. Please wait...
