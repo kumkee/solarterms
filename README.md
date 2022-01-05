@@ -17,11 +17,12 @@ pip install -r requirements.txt
 HORIZONS has introduced rate limits to their service. To avoid going over the limits, default maximum thread number has been set to 2. If you still encounter timeout error, please wait a moment before performing new calculations. 
 
 ## Compilation of locale translations
-In order for you local translation work, you will need to compile the po file of your language into its binary mo file. Here is the example of how to do that for ja.
+In order for you local translations to work, you will need to compile the po file of your language into its binary mo file. Here is the example of how to do that for ja on linux.
 ```
 $ cd locale/ja/LC_MESSAGES
 $ msgfmt -o solarterms.mo solarterms
 ```
+To compile po files on Windows, you can use [poedit](https://poedit.net/).
 
 ## Usage
 For usage, please see test.py. An example of running the test.py is listed below, where solar terms are different from those in the Northern Hemisphere.
