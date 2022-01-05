@@ -13,7 +13,7 @@ import locale
 
 minTimeDelta = datetime.timedelta(seconds = 0.5)
 zeroTimeDelta = datetime.timedelta()
-MaxWorkers = 20
+MaxWorkers = 2
 TOLERANCE = 1e-12
 #JPLTimeFormat = "%Y-%b-%d %H:%M:%S.%f"
 JPLTimeFormat = "YYYY-MMM-DD HH:mm:ss.SSS"
