@@ -2,6 +2,9 @@ import solarterms
 import datetime
 import arrow
 import sys
+import pandas as pd
+
+pd.set_option('display.max_rows', 30)
 
 year = int(sys.argv[1]) if len(sys.argv) >=2 else 2021
 dt = datetime.timedelta(days=366)
